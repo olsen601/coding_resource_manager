@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+
+    <div class="navigation">
+
+          <span>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('results') }}">Results</a>
+            <a href="{{ url_for('favorites') }}">Favorites</a>
+          </span>
+
+    </div>
+
+    <hr>
+
+    <div class="search">
+      <form id="search_form" action="/results" method="POST">
+        <input id="search_text" name="search_input" type="text" autofocus="autofocus" required>
+        <input id="search_button" name="search_submit" type="submit">
+      </form>
+    </div>
+
+  </body>
+</html>
