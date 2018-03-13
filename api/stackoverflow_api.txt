@@ -1,0 +1,29 @@
+sample api data from stackoverflow
+no key required for basic or advanced search features
+
+{
+  "tags":["python","django","python-3.x"],
+  "owner":
+    {
+     "reputation":1,
+     "user_id":8548052,
+     "user_type":"registered",
+     "profile_image":"https://i.stack.imgur.com/yKwfC.png?s=128&g=1",
+     "display_name":"personality13",
+     "link":"https://stackoverflow.com/users/8548052/personality13"
+     },
+  "is_answered":false,
+  "view_count":31,
+  "answer_count":1,
+  "score":0,
+  "last_activity_date":1520851247,
+  "creation_date":1520846900,
+  "last_edit_date":1520847568,
+  "question_id":49231824,
+  "link":"https://stackoverflow.com/questions/49231824/how-to-submit-a-mock-url",
+  "title":"How to submit a mock url?"
+  }
+
+test of api from browser
+
+https://api.stackexchange.com/2.2/search/advanced?order=desc&sort=activity&closed=False&tagged=python-3.x&title=mock&site=stackoverflow

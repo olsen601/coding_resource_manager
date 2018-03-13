@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+
+    <div class="navigation">
+
+          <span>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('results') }}">Results</a>
+            <a href="{{ url_for('favorites') }}">Favorites</a>
+          </span>
+
+    </div>
+
+    <hr>
+
+    {{ body }}
+
+  </body>
+</html>
