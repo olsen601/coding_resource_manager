@@ -9,7 +9,7 @@ application = Flask(__name__)
 @application.route('/navigate/<search_term>')
 def navigate(search_term):
   # The Github api keyword "q" helps searching for repositories with the word "search_term"
-  gitrepo_search = "https://api.github.com/search/repositories?q=" + search_term
+  gitrepo_search = "https://api.github.com/search/repositories?q=" + search_term +"&type=Issues&utf8=✓"
 
   github_repo = urllib.urlopen(gitrepo_search)
   git_info = github_repo.read()
@@ -24,6 +24,7 @@ def navigate(search_term):
    name = data['items'][count]['owner']['login']
    avatar_url = data['items'][count]['owner']['avatar_url']
    html_url = data['items'][count]['owner']['html_url']
+   issues = data['items'][count]['issues']
 
    #Commit information
    commitstr = data['items'][count]['commits_url']
