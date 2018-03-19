@@ -16,7 +16,22 @@
 
     <hr>
 
-    {{ body }}
+    <div>
 
+      <h2>Stack Overflow</h2>
+      <ul>
+
+      {% block body %}
+
+        {% for item,object in body.items() %}
+
+          <a href="{{ object.link }}"<li>{{ object.title }}</li></a><br/>
+
+        {% endfor %}
+
+      {% endblock %}
+
+      </ul>
+    </div>
   </body>
 </html>
