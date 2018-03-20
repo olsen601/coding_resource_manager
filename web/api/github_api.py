@@ -3,16 +3,15 @@ import requests_cache
 
 requests_cache.install_cache('github_cache')
 
-url = 'https://api.github.com/search?q=' + search_term +'&type=Issues&utf8=✓'
+url = 'https://api.github.com/search?q='
 
 def get_stack_source(title):
 
     try:
         params = {
-        'order': 'desc',
-        'sort': 'relevance',
-        'title': title,
-        'site': 'github'
+        'q': search_term'
+        'type': '&type=Issues&utf8=✓'
+        'utf8': True,
         }
 
         response = requests.get(url, params).json()
