@@ -10,7 +10,7 @@ def get_stack_source(title):
     try:
         params = {
         'q': search_term'
-        'type': '&type=Issues&utf8=✓'
+        'type': 'Issues'
         'utf8': True,
         }
 
