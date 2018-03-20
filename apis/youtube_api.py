@@ -7,7 +7,7 @@ from key import key
 
 
 
-def video(category):
+def video(search_query):
 
     DEVELOPER_KEY = key
     YOUTUBE_API_SERVICE_NAME = 'youtube'
@@ -20,7 +20,7 @@ def video(category):
     # Call the search.list method to retrieve results matching the specified
     # query term.
         search_response = youtube.search().list(
-            q= category,
+            q= search_query,
             part="id,snippet",
             maxResults=2,
             type='videos',
@@ -32,7 +32,7 @@ def video(category):
 
         title = result['snippet']['title']
         video_id = result['id']['videoId']
-
+        # print('title: ', title, "video: ", video )
         return{ 'title': title, 'video_id': video_id }
 
     except Exception as e:

@@ -22,9 +22,10 @@ YOUTUBE_API_VERSION = "v3"
 @app.route('/get-video')
 def get_video():
 
-    category = request.args.get('category')
 
-    video = youtube_api.video(category)
+    search_query = request.args.get("python code")
+
+    video = youtube_api.video(search_query)
 
     if video:
         return render_template('video.html', video=video)
