@@ -1,2 +1,6 @@
 __pycache__/
 venv/
+key.py
+client_secret.json
+stack_cache.sqlite
+archive.db
