@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-from api import stack_api
+from api import stack_api, github_api, youtube_api
 from data_store import archive
 from app import app
 
@@ -11,11 +11,17 @@ def index():
 @app.route('/results', methods=['GET', 'POST'])
 def results():
     global response
+    global response2
     if request.method == 'POST':
         term = str(request.form.get('search_input'))
-        response = stack_api.get_stack_source(term)
-        return render_template('results.html', title='Results', body=response)
-    return render_template('results.html', title='Results', body=response)
+        stackoverflow_response = stack_api.get_stack_source(term)
+        github_response = github_api.get_git_source(term)
+        youtube_response = youtube_api.video(term)
+        print(stackoverflow_response)
+        print(github_response)
+        print(youtube_response)
+        return render_template('results.html', title='Results', stack_template_data=stackoverflow_response, git_template_data=github_response, youtube_template_data=youtube_response)
+    return render_template('results.html', title='Results', stack_template_data=github_response, git_template_data=github_response, youtube_template_data=youtube_response)
 
 @app.route('/bookmark', methods=['GET', 'POST'])
 def bookmark():

@@ -21,9 +21,9 @@
       <h2>Stack Overflow</h2>
       <ul>
 
-      {% block body %}
+      {% block stack_template_data %}
 
-        {% for item,object in body.items() %}
+        {% for item,object in stack_template_data.items() %}
 
           <a href="{{ object.link }}"<li>{{ object.title }}</li></a>
           <form action="/bookmark" method="POST">
@@ -39,6 +39,55 @@
       {% endblock %}
 
       </ul>
+
+    </div>
+    <div>
+
+      <h2>GitHub</h2>
+      <ul>
+
+      {% block git_template_data %}
+
+        {% for item,object in git_template_data.items() %}
+
+          <a href="{{ object.link }}"<li>{{ object.title }}</li></a>
+          <form action="/bookmark" method="POST">
+            <input type="hidden" name="source" value="Github">
+            <input type="hidden" name="title" value="{{ object.title }}">
+            <input type="hidden" name="link" value="{{ object.link }}">
+            <input type="submit" name="bookmark" value="bookmark">
+          </form>
+          <br/>
+
+        {% endfor %}
+
+      {% endblock %}
+
+      </ul>
+    </div>
+    <div>
+
+      {% block youtube_template_data %}
+
+          <h1>Videos for you</h1>
+
+          {% if youtube_template_data %}
+
+            <h2>{{ youtube_template_data.title }}</h2>
+
+            <iframe width="700" height="500" src="https://www.youtube.com/embed/{{youtube_template_data.video_id}}"></iframe>
+
+            <form action="/bookmark" method="POST">
+              <input type="hidden" name="source" value="Youtube">
+              <input type="hidden" name="title" value="{{ youtube_template_data.title }}">
+              <input type="hidden" name="link" value="https://www.youtube.com/watch?v={{ youtube_template_data.video_id }}">
+              <input type="submit" name="bookmark" value="bookmark">
+            </form>
+
+          {% endif %}
+
+      {% endblock %}
+
     </div>
   </body>
 </html>
