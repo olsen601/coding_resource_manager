@@ -79,10 +79,10 @@ def latestcommit(commit_url):
    #print sha, author, committed_at
    commitdict = dict(sha=sha, committime= committed_at, author=author, message=message)
    comm.append(commitdict)
-   print commit_url
+   print(commit_url)
 
-  # API rate limit exceeded while querying the API
-  except KeyError, e:
+# API rate limit exceeded while querying the API
+  except KeyError as e:
    # Github API returns only Error message with documentation url (check cover.txt)
    sha = "---"
    committed_at = "---"
