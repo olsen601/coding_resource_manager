@@ -23,15 +23,9 @@
 
       {% block body %}
 
-        {% for item,object in body.items() %}
+        {% for index,book in body.items() %}
 
-          <a href="{{ object.link }}"<li>{{ object.title }}</li></a>
-          <form action="/bookmark" method="POST">
-            <input type="hidden" name="source" value="Stack Overflow">
-            <input type="hidden" name="title" value="{{ object.title }}">
-            <input type="hidden" name="link" value="{{ object.link }}">
-            <input type="submit" name="bookmark" value="bookmark">
-          </form>
+          <a href="{{ book.link }}"<li>{{ book.title }}</li></a>
           <br/>
 
         {% endfor %}
@@ -40,5 +34,6 @@
 
       </ul>
     </div>
+
   </body>
 </html>
