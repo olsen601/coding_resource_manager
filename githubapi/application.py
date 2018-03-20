@@ -51,40 +51,5 @@ def sortrepos(info):
      print(info[index][1]), repo[index][0], repo[index][1], repo[index][2], repo[index][3], repo[index][4]
   return repos
 
-# Fetching latest commit info of github repo while checking GithubAPI query limit status
-def latestcommit(commit_url):
-  commit_info = requests.get(commit_url)
-  git_infocommit = commit_info.read()
-  datacommit = json.loads(git_infocommit)
-  count = 0
-  comm = []
-
-  # API rate limit not exceeded
-  try:
-   # GithubAPI returns latest commit information at first position, sorted in descending order by default
-   sha = datacommit[0]["sha"]
-   commit_time = datacommit[0]["commit"]["committer"]["date"]
-   author = datacommit[0]["commit"]["committer"]["name"]
-   message = datacommit[0]["commit"]["message"]
-   committed_at = fix_datetime(commit_time)
-   #print sha, author, committed_at
-   commitdict = dict(sha=sha, committime= committed_at, author=author, message=message)
-   comm.append(commitdict)
-   print(commit_url)
-
-# API rate limit exceeded while querying the API
-  except KeyError as e:
-   # Github API returns only Error message with documentation url (check cover.txt)
-   sha = "---"
-   committed_at = "---"
-   author = "---"
-   message = datacommit['message'] + datacommit['documentation_url']
-   #print sha, committed_at, author, message
-   commitdict = dict(sha=sha, committime=committed_at, author=author, message=message)
-   comm.append(commitdict)
-
-   #print 'Github API query limitGot a KeyError - at: "%s"' % str(e)
-  return sha, committed_at, author, message
-
 if __name__ == "__main__":
     application.run(host='0.0.0.0')
