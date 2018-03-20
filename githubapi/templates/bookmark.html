@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+
+    <div class="navigation">
+
+          <span>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('results') }}">Results</a>
+            <a href="{{ url_for('bookmark') }}">Bookmarks</a>
+          </span>
+
+    </div>
+
+    <hr>
+
+    <div>
+
+      <h2>Stack Overflow</h2>
+      <ul>
+
+      {% block body %}
+
+        {% for index,book in body.items() %}
+
+          <a href="{{ book.link }}"<li>{{ book.title }}</li></a>
+          <br/>
+
+        {% endfor %}
+
+      {% endblock %}
+
+      </ul>
+    </div>
+
+  </body>
+</html>
