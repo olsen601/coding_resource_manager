@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Coding Resource Manager</h1>
+
+<form action="/get-video" method="GET">
+
+    <body>
+    	<!-- HTML for SEARCH BAR -->
+    	<div id="tfheader">
+    		<form id="tfnewsearch" method="get">
+    		        <input type="text" class="tftextinput" name="search_query" size="21" maxlength="120"><input type="submit" value="search YouTube" class="tfbutton">
+    		</form>
+    	<div class="tfclear"></div>
+    	</div>
+    </body>
+</form>
+
+{% endblock %}

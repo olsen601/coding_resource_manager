@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Videos for you</h1>
+
+{% if video %}
+
+<h2>{{ video.title }}</h2>
+
+<iframe width="700" height="500" src="https://www.youtube.com/embed/{{video.video_id}}"></iframe>
+
+{% endif %}
+
+{% endblock %}
