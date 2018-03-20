@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
 from apis import youtube_api
-from key import key
+
 
 
 
@@ -15,15 +15,15 @@ def home_page():
 # tab of
 #   https://cloud.google.com/console
 # Please ensure that you have enabled the YouTube Data API for your project.
-DEVELOPER_KEY = key
-YOUTUBE_API_SERVICE_NAME = "youtube"
-YOUTUBE_API_VERSION = "v3"
+# DEVELOPER_KEY = key
+# YOUTUBE_API_SERVICE_NAME = "youtube"
+# YOUTUBE_API_VERSION = "v3"
 
 @app.route('/get-video')
 def get_video():
 
 
-    search_query = request.args.get("python code")
+    search_query = request.args.get("search_query")
 
     video = youtube_api.video(search_query)
 
