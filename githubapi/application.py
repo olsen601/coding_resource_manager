@@ -1,8 +1,7 @@
-<<<<<<< HEAD
 from flask import Flask, render_template
 from dateutil import parser
 from operator import itemgetter
-import requests, json, urllib
+import requests, json
 
 application = Flask(__name__)
 
@@ -10,9 +9,9 @@ application = Flask(__name__)
 @application.route('/navigate/<search_term>')
 def navigate(search_term):
   # The Github api keyword "q" helps searching for repositories with the word "search_term"
-  gitrepo_search = "https://api.github.com/search/repositories?q=" + search_term +"&type=Issues&utf8=✓"
+  gitrepo_search = "https://api.github.com/search?q=" + search_term +"&type=Issues&utf8=✓"
 
-  github_repo = urllib.urlopen(gitrepo_search)
+  github_repo = requests.get(gitrepo_search)
   git_info = github_repo.read()
   data = json.loads(git_info)
   count = 0;
@@ -20,18 +19,9 @@ def navigate(search_term):
 
   #Github repository information
   for result in data["items"]:
-   created_at = data['items'][count]['created_at']
-   repo = data['items'][count]['name']
    name = data['items'][count]['owner']['login']
-   avatar_url = data['items'][count]['owner']['avatar_url']
    html_url = data['items'][count]['owner']['html_url']
    issues = data['items'][count]['issues']
-
-   #Commit information
-   commitstr = data['items'][count]['commits_url']
-   x = list(commitstr)
-   ind = commitstr.index('{')
-   commiturl = "".join(x[0:ind])
 
    information.append((name, fix_datetime(created_at), html_url, avatar_url, repo, commiturl))
    count=count+1
@@ -63,7 +53,7 @@ def sortrepos(info):
 
 # Fetching latest commit info of github repo while checking GithubAPI query limit status
 def latestcommit(commit_url):
-  commit_info = urllib.urlopen(commit_url)
+  commit_info = requests.get(commit_url)
   git_infocommit = commit_info.read()
   datacommit = json.loads(git_infocommit)
   count = 0

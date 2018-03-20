@@ -1,6 +1,9 @@
 __pycache__/
 venv/
+<<<<<<< HEAD
 key.py
 client_secret.json
+=======
+>>>>>>> 91306329ffc99346ead132dce60bd2e028560db7
 stack_cache.sqlite
 archive.db

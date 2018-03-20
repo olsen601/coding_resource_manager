@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+
+    <div class="navigation">
+
+          <span>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('results') }}">Results</a>
+            <a href="{{ url_for('bookmark') }}">Bookmarks</a>
+          </span>
+
+    </div>
+
+    <hr>
+
+    <div>
+
+      <h2>Stack Overflow</h2>
+      <ul>
+
+      {% block body %}
+
+        {% for item,object in body.items() %}
+
+          <a href="{{ object.link }}"<li>{{ object.title }}</li></a>
+          <form action="/bookmark" method="POST">
+            <input type="hidden" name="source" value="Stack Overflow">
+            <input type="hidden" name="title" value="{{ object.title }}">
+            <input type="hidden" name="link" value="{{ object.link }}">
+            <input type="submit" name="bookmark" value="bookmark">
+          </form>
+          <br/>
+
+        {% endfor %}
+
+      {% endblock %}
+
+      </ul>
+    </div>
+  </body>
+</html>
