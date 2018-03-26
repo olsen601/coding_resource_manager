@@ -1,5 +1,6 @@
 __pycache__/
 venv/
 stack_cache.sqlite
+github_cache.sqlite
 archive.db
 key.py
