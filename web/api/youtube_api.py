@@ -2,7 +2,7 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 import os
 from key import key
-
+import logging
 
 def video(search_query):
 
@@ -23,6 +23,7 @@ def video(search_query):
             type='videos',
             safeSearch='strict'
         ).execute()
+        logging.info('youtube API call started')
 
         result = search_response.get('items', [])[0]
 
@@ -33,6 +34,7 @@ def video(search_query):
 
     except Exception as e:
         print(e)
+        logging.info('youtube exception caught')
 
 
 if __name__ == "__main__":

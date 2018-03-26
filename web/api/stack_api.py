@@ -1,5 +1,6 @@
 import requests
 import requests_cache
+import logging
 
 requests_cache.install_cache('stack_cache')
 
@@ -16,6 +17,7 @@ def get_stack_source(title):
         }
 
         response = requests.get(url, params).json()
+        logging.info('stackoverflow API call started')
 
         resp_dict = {}
         i = 0
@@ -28,3 +30,4 @@ def get_stack_source(title):
 
     except Exception as e:
         print('Error ', e)
+        logging.info('stackoverflow exception caught')
