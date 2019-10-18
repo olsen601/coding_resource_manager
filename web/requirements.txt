@@ -6,7 +6,7 @@ click==6.7
 client==0.0.1
 credentials==1.1
 discovery==0.0.4
-Flask==0.12.2
+Flask==1.0
 get==0.0.39
 google==2.0.1
 google-api-python-client==1.6.5
